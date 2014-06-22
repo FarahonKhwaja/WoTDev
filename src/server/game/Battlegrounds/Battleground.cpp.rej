@@ -1,0 +1,17 @@
+***************
+*** 306,312 ****
+              if (Player* player = ObjectAccessor::FindPlayer(itr->first))
+              {
+                  player->GetPosition(&pos);
+-                 GetTeamStartLoc(player->GetBGTeam(), x, y, z, o);
+                  if (pos.GetExactDistSq(x, y, z) > maxDist)
+                  {
+                      TC_LOG_DEBUG("bg.battleground", "BATTLEGROUND: Sending %s back to start location (map: %u) (possible exploit)", player->GetName().c_str(), GetMapId());
+--- 306,312 ----
+              if (Player* player = ObjectAccessor::FindPlayer(itr->first))
+              {
+                  player->GetPosition(&pos);
++                 GetTeamStartLoc(player->GetTeam(), x, y, z, o);
+                  if (pos.GetExactDistSq(x, y, z) > maxDist)
+                  {
+                      TC_LOG_DEBUG("bg.battleground", "BATTLEGROUND: Sending %s back to start location (map: %u) (possible exploit)", player->GetName().c_str(), GetMapId());
