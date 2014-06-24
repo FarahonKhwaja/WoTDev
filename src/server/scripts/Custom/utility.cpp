@@ -24,8 +24,8 @@ public:
         };
         static ChatCommand commandTable[] =
         {
-            { "tools",           SEC_PLAYER,      true, NULL,                   "", utilityCommandTable },
-            { "to",           SEC_PLAYER,      true, NULL,                   "", utilityCommandTable },
+			{ "tools", rbac::RBAC_PERM_COMMAND_COMMANDS, true, NULL, "", utilityCommandTable },
+			{ "to", rbac::RBAC_PERM_COMMAND_COMMANDS, true, NULL, "", utilityCommandTable },
             { NULL,             0,                  false, NULL,                               "", NULL }
         };
         return commandTable;

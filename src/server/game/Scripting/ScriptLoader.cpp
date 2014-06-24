@@ -1442,6 +1442,7 @@ void AddSC_DuelReset();
 void AddSC_LevelNPC();
 void AddSC_PvPTitles();
 void AddSC_PollVote();
+void AddSC_vipmall_security();
 #endif
 
 void AddCustomScripts()
@@ -1456,5 +1457,6 @@ void AddCustomScripts()
 	AddSC_LevelNPC();
 	AddSC_PvPTitles();
 	AddSC_PollVote();
+	AddSC_vipmall_security();
 #endif
 }

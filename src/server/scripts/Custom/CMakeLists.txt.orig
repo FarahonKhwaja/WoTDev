@@ -19,7 +19,6 @@ set(scripts_STAT_SRCS
     Custom/PvPTitles.cpp
     Custom/vipmall_security.cpp
     Custom/PollvoteNPC.cpp
-    Custom/1v1.cpp
 )
 
 message("  -> Prepared: Custom")

@@ -50,7 +50,7 @@ public:
         };
         static ChatCommand commandTable[] =
         {
-            { "gm", rbac::RBAC_PERM_COMMAND_GM, false, NULL, "", gmCommandTable },
+			{ "gm", rbac::RBAC_PERM_COMMAND_GM, false, NULL, "", gmCommandTable },
             { NULL, 0,                    false, NULL, "", NULL }
         };
         return commandTable;

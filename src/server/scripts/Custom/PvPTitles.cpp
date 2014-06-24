@@ -38,7 +38,7 @@ enum eRanks
  
 enum eKills
 {
-  KILLS_1 = 100,
+  KILLS_1 = 1,
   KILLS_2 = 500,
   KILLS_3 = 1000,
   KILLS_4 = 2000,

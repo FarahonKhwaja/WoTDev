@@ -1,4 +1,5 @@
 #include "ScriptMgr.h"
+#include <iostream>
 
 class PollvoteNPC : public CreatureScript
 {
@@ -16,15 +17,9 @@ public:
 		{
 			plr->ADD_GOSSIP_ITEM(3, "Option 1", GOSSIP_SENDER_MAIN, 1);
 			plr->ADD_GOSSIP_ITEM(3, "Option 2", GOSSIP_SENDER_MAIN, 2);
-			plr->ADD_GOSSIP_ITEM(3, "Show results", GOSSIP_SENDER_MAIN, 3);
-			plr->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, npc->GetGUID());
 		}
-		else
-		{
-			plr->GetSession()->SendAreaTriggerMessage("You already voted for this poll !");
-			plr->ADD_GOSSIP_ITEM(3, "Show results", GOSSIP_SENDER_MAIN, 3);
-			plr->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, npc->GetGUID());
-		}
+		plr->ADD_GOSSIP_ITEM(3, "Show results", GOSSIP_SENDER_MAIN, 3);
+		plr->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, npc->GetGUID());
 		return true;
 	}
 	bool OnGossipSelect(Player* plr, Creature* npc, uint32 sender, uint32 uiAction) {
@@ -50,10 +45,10 @@ public:
 			break;
 		case 3:
 			plr->PlayerTalkClass->ClearMenus();
-			uint32 pv1 = getOption1Pollvote();
-			uint32 pv2 = getOption2Pollvote();
-			plr->ADD_GOSSIP_ITEM(1, "Option 1 : pv1", GOSSIP_SENDER_MAIN, 4);
-			plr->ADD_GOSSIP_ITEM(1, "Option 2 : pv2", GOSSIP_SENDER_MAIN, 4);
+			plr->ADD_GOSSIP_ITEM(1, "Option 1, pv1", GOSSIP_SENDER_MAIN, 4);
+			std::cout << "Option 1 :" << getOption1Pollvote() << std::endl;
+			plr->ADD_GOSSIP_ITEM(1, "Option 2, pv2", GOSSIP_SENDER_MAIN, 4);
+			std::cout << "Option 2 :" << getOption2Pollvote() << std::endl;
 			plr->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, npc->GetGUID());
 			//plr->setPollvote(true);
 			break;
