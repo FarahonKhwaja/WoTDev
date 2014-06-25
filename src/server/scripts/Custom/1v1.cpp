@@ -7,13 +7,13 @@
 #include "ArenaTeam.h"
 #include "Language.h"
 
-#define ARENA_1V1_MIN_LEVEL 80 // min level to create an arenateam
-#define ARENA_1V1_COST 40 * 10000 // costs for create a team: 40 gold
+#define ARENA_1V1_MIN_LEVEL 19 // min level to create an arenateam
+#define ARENA_1V1_COST 0 * 10000 // costs for create a team: 40 gold
 
 class npc_1v1arena : public CreatureScript  
 {
 public:
-    npc_1v1arena() : CreatureScript("npc_1v1arena") 
+    npc_1v1arena() : CreatureScript("1v1NPC") 
 	{
 	}
 
@@ -151,22 +151,22 @@ public:
 	bool OnGossipHello(Player* player, Creature* me)
 	{
 		if(player->GetArenaTeamId(ArenaTeam::GetSlotByType(ARENA_TEAM_1v1)) == NULL)
-			player->ADD_GOSSIP_ITEM_EXTENDED(GOSSIP_ICON_CHAT, "|TInterface/ICONS/Achievement_Arena_2v2_7:30|t Create 1v1 Rated Arena Team", GOSSIP_SENDER_MAIN, 1, "Create 1v1 arena team?", ARENA_1V1_COST, false);
+			player->ADD_GOSSIP_ITEM_EXTENDED(GOSSIP_ICON_CHAT, "Create 1v1 Rated Arena Team", GOSSIP_SENDER_MAIN, 1, "Create 1v1 arena team?", ARENA_1V1_COST, false);
 		else
 		{
 			if(player->InBattlegroundQueueForBattlegroundQueueType(BATTLEGROUND_QUEUE_1v1))
-				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "|TInterface/ICONS/Achievement_Arena_2v2_7:30|t Leave 1v1 Arena", GOSSIP_SENDER_MAIN, 3);
+				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Leave 1v1 Arena", GOSSIP_SENDER_MAIN, 3);
 			else
 			{
-				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "|TInterface/ICONS/Achievement_Arena_3v3_5:30|t Join 1v1 Rated Arena", GOSSIP_SENDER_MAIN, 2);
-				player->ADD_GOSSIP_ITEM_EXTENDED(GOSSIP_ICON_CHAT, "|TInterface/ICONS/Achievement_Arena_2v2_7:30|t Disband Arena team", GOSSIP_SENDER_MAIN, 5, "Are you sure?", 0, false);
+				player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Join 1v1 Rated Queue", GOSSIP_SENDER_MAIN, 2);
+				player->ADD_GOSSIP_ITEM_EXTENDED(GOSSIP_ICON_CHAT, "Disband Arena team", GOSSIP_SENDER_MAIN, 5, "Are you sure?", 0, false);
 			}
 
-			player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "|TInterface/ICONS/INV_Misc_Coin_01:30|t Show statistics", GOSSIP_SENDER_MAIN, 4);
+			player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Show statistics", GOSSIP_SENDER_MAIN, 4);
 		}
 
-		player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "|TInterface/ICONS/INV_Misc_Coin_03:30|t How to Use NPC?", GOSSIP_SENDER_MAIN, 8);
-		player->SEND_GOSSIP_MENU(68, me->GetGUID());
+		player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "How to Use NPC?", GOSSIP_SENDER_MAIN, 8);
+		player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, me->GetGUID());
 		return true;
 	}
 
